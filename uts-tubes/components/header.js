@@ -9,7 +9,7 @@ const Header = ({ title, withBack = false }) => {
   const trueGray900 = "#171717";
   const navigation = useNavigation();
   return (
-    <SafeAreaView>
+    <SafeAreaView >
       <StatusBar barStyle="light" backgroundColor={trueGray900} />
       <Box bg={"trueGray.900"} p={"4"}>
         <HStack justifyContent="space-between" alignItems="center">
@@ -17,7 +17,7 @@ const Header = ({ title, withBack = false }) => {
             {!withBack ? (
               <>
                 <Image
-                  source={require("../assets/cnn.png")}
+                  source={require("../assets/image.png")}
                   w="12"
                   h="12"
                   alt="CNN Logo"
@@ -38,24 +38,6 @@ const Header = ({ title, withBack = false }) => {
           </HStack>
 
           <HStack space={"2xl"}>
-            <Image
-              source={require("../assets/facebook.png")}
-              w="5"
-              h="5"
-              alt="Facebook Icon"
-            />
-            <Image
-              source={require("../assets/youtube.png")}
-              w="5"
-              h="5"
-              alt="Facebook Icon"
-            />
-            <Image
-              source={require("../assets/twitter.png")}
-              w="5"
-              h="5"
-              alt="Facebook Icon"
-            />
             <Image
               source={require("../assets/search.png")}
               w="5"

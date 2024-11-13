@@ -1,32 +1,43 @@
 import { Box, Text, Image, View, Heading, ScrollView } from "native-base";
-import { Header } from "../components";
+import { TouchableOpacity } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 
 const NewsDetail = ({ route }) => {
-  // Mendapatkan parameter
+  const navigation = useNavigation();
   const { image, date, title, content } = route.params.item;
 
   return (
-    <>
-      <Header title={"Berita"} withBack="true" />
-      <ScrollView>
-        <Image w='100%' h={200} source={{ uri: image }} alt={title} />
-        <View flex={1} p={"4"}>
-          <Text fontSize={'md'}>{date}</Text>
-          <Box
-            py={"4"}
-            borderBottomColor={"coolGray.300"}
-            borderBottomWidth={1}
-            flexDirection="row"
-            flex={1}
-          >
-            <Heading>{title}</Heading>
-          </Box>
-          <Text paddingTop={'4'} fontSize={'lg'} fontWeight={'600'}>
+    <ScrollView>
+      <View position="relative">
+        <Image w="100%" h={420} source={{ uri: image }} alt={title} />
+        <TouchableOpacity
+          style={{
+            position: "absolute",
+            top: 16,
+            left: 16,
+            padding: 8,
+          }}
+          onPress={() => navigation.goBack()}
+        >
+        <Ionicons name="arrow-back-outline" size={24} color="white" />
+        </TouchableOpacity>
+        <Box
+          mt={-10}
+          mx="5"
+          bg="white"
+          p={4}
+          borderRadius="lg"
+          shadow={8}
+        >
+          <Heading mb={2}>{title}</Heading>
+          <Text  color="gray.500" >{date}</Text>
+          <Text paddingTop={2} fontSize="md" color="gray.800" textAlign="justify">
             {content}
           </Text>
-        </View>
-      </ScrollView>
-    </>
+        </Box>
+      </View>
+    </ScrollView>
   );
 };
 

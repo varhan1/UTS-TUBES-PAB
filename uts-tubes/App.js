@@ -6,7 +6,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "./screens/home";
 import Video from "./screens/video";
 import Profile from "./screens/profile";
-import ForYou from "./screens/for-you";
+import Discover from "./screens/discover";
 import NewsDetail from "./screens/news-detail";
 import Tips from "./screens/tips";
 
@@ -26,8 +26,8 @@ const Tabs = () => {
             case "Home":
               iconName = "home-outline";
               break;
-            case "For You":
-              iconName = "document-text-outline";
+            case "Discover":
+              iconName = "compass-outline";
               break;
             case "Video":
               iconName = "videocam-outline";
@@ -50,7 +50,7 @@ const Tabs = () => {
         },
         tabBarIconStyle: { marginTop: 5 },
         tabBarStyle: {
-          height: 70,
+          height: 100,
           borderTopWidth: 0,
         },
         tabBarLabel: ({ children, color, focused }) => {
@@ -63,10 +63,10 @@ const Tabs = () => {
       })}
     >
       <Tab.Screen name="Home" component={Home} options={noHead} />
-      <Tab.Screen name="For You" component={ForYou} options={noHead} />
+      <Tab.Screen name="Discover" component={Discover} options={noHead} />
       <Tab.Screen name="Video" component={Video} options={noHead} />
-      <Tab.Screen name="Profile" component={Profile} options={noHead} />
       <Tab.Screen name="Tips" component={Tips} options={noHead} />
+      <Tab.Screen name="Profile" component={Profile} options={noHead} />
     </Tab.Navigator>
   );
 };
