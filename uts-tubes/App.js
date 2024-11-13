@@ -4,13 +4,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider, Text } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "./screens/home";
-import Video from "./screens/video";
 import Profile from "./screens/profile";
 import Discover from "./screens/discover";
 import NewsDetail from "./screens/news-detail";
 import Tips from "./screens/tips";
+import BMICalculator from "./screens/BMICalculator"; // Import untuk BMI
 
-// Navigator Declaration
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -29,16 +28,15 @@ const Tabs = () => {
             case "Discover":
               iconName = "compass-outline";
               break;
-            case "Video":
-              iconName = "videocam-outline";
-              break;
             case "Profile":
               iconName = "person-circle-outline";
               break;
             case "Tips":
               iconName = "bulb-outline";
               break;
-
+            case "BMI":
+              iconName = "fitness-outline"; // Ikon kesehatan
+              break;
           }
           return (
             <Ionicons
@@ -49,23 +47,18 @@ const Tabs = () => {
           );
         },
         tabBarIconStyle: { marginTop: 5 },
-        tabBarStyle: {
-          height: 100,
-          borderTopWidth: 0,
-        },
-        tabBarLabel: ({ children, color, focused }) => {
-          return (
-            <Text color={focused ? "black" : color} mb={2}>
-              {children}
-            </Text>
-          );
-        },
+        tabBarStyle: { height: 100, borderTopWidth: 0 },
+        tabBarLabel: ({ children, color, focused }) => (
+          <Text color={focused ? "black" : color} mb={2} textAlign="center">
+            {children}
+          </Text>
+        ),
       })}
     >
       <Tab.Screen name="Home" component={Home} options={noHead} />
       <Tab.Screen name="Discover" component={Discover} options={noHead} />
-      <Tab.Screen name="Video" component={Video} options={noHead} />
       <Tab.Screen name="Tips" component={Tips} options={noHead} />
+      <Tab.Screen name="BMI" component={BMICalculator} options={noHead} /> 
       <Tab.Screen name="Profile" component={Profile} options={noHead} />
     </Tab.Navigator>
   );
