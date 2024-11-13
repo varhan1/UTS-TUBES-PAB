@@ -4,11 +4,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider, Text } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "./screens/home";
-import Video from "./screens/video";
 import Profile from "./screens/profile";
 import Discover from "./screens/discover";
 import NewsDetail from "./screens/news-detail";
 import Tips from "./screens/tips";
+import HealthScreen from "./screens/HealthScreen"; // Import HealthScreen
+import AnotherScreen from "./screens/AnotherScreen"; // Import AnotherScreen
 
 // Navigator Declaration
 const Stack = createNativeStackNavigator();
@@ -28,9 +29,6 @@ const Tabs = () => {
               break;
             case "Discover":
               iconName = "compass-outline";
-              break;
-            case "Video":
-              iconName = "videocam-outline";
               break;
             case "Profile":
               iconName = "person-circle-outline";
@@ -64,7 +62,6 @@ const Tabs = () => {
     >
       <Tab.Screen name="Home" component={Home} options={noHead} />
       <Tab.Screen name="Discover" component={Discover} options={noHead} />
-      <Tab.Screen name="Video" component={Video} options={noHead} />
       <Tab.Screen name="Tips" component={Tips} options={noHead} />
       <Tab.Screen name="Profile" component={Profile} options={noHead} />
     </Tab.Navigator>
@@ -77,6 +74,8 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Tabs" component={Tabs} options={noHead} />
+          <Stack.Screen name="HealthScreen" component={HealthScreen} options={noHead} /> 
+          <Stack.Screen name="AnotherScreen" component={AnotherScreen} options={noHead} />
           <Stack.Screen
             name="News Detail"
             component={NewsDetail}
