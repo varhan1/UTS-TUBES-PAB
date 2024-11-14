@@ -51,7 +51,7 @@ const Tabs = () => {
         tabBarIconStyle: { marginTop: 5 },
         tabBarStyle: { height: 100, borderTopWidth: 0 },
         tabBarLabel: ({ children, color, focused }) => (
-          <Text color={focused ? "black" : color} mb={2} textAlign="center">
+          <Text color={focused ? "black" : color} textAlign="center">
             {children}
           </Text>
         ),
