@@ -8,7 +8,7 @@ import Profile from "./screens/profile";
 import Discover from "./screens/discover";
 import NewsDetail from "./screens/news-detail";
 import Tips from "./screens/tips";
-import BMICalculator from "./screens/BMICalculator"; // Import untuk BMI
+import BMICalculator from "./screens/BMICalculator"; 
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,7 +35,7 @@ const Tabs = () => {
               iconName = "bulb-outline";
               break;
             case "BMI":
-              iconName = "fitness-outline"; // Ikon kesehatan
+              iconName = "fitness-outline";
               break;
           }
           return (
