@@ -17,10 +17,10 @@ const Header = ({ title, withBack = false }) => {
             {!withBack ? (
               <>
                 <Image
-                  source={require("../assets/image.png")}
+                  source={require("../assets/logo.png")}
                   w="12"
                   h="12"
-                  alt="CNN Logo"
+                  alt="Logo"
                   mr={"3"}
                 />
               </>
@@ -38,12 +38,14 @@ const Header = ({ title, withBack = false }) => {
           </HStack>
 
           <HStack space={"2xl"}>
+          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
             <Image
-              source={require("../assets/search.png")}
-              w="5"
-              h="5"
-              alt="Search Icon"
+              source={require("../assets/profile.png")}
+              w="6"
+              h="6"
+              alt="profile icon"
             />
+            </TouchableOpacity>
           </HStack>
         </HStack>
       </Box>
