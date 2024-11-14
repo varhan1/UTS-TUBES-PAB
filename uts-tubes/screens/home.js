@@ -10,10 +10,10 @@ const Home = () => {
 
   return (
     <>
-    <Header title={"Health Go"} />
+    <Header title={"News"} />
     <ScrollView>
     <Box py={"4"} px={"4"} bg="white">
-      <Heading mb="2" color="green.800">Breaking News</Heading>
+      <Heading mb="2">Breaking News</Heading>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {datas.slice(0, 3).map((item) => (
           <TouchableOpacity
@@ -35,9 +35,9 @@ const Home = () => {
 
     <Box py={"4"} px={"4"} bg="white">
     <Box flexDirection="row" justifyContent="space-between" alignItems="center" mb="2">
-            <Heading color="green.800">Recommended</Heading>
+            <Heading>Recommended</Heading>
             <TouchableOpacity onPress={() => navigation.navigate("Discover")}>
-              <Text color="green.800">View All</Text>
+              <Text color="gray.700">View All</Text>
             </TouchableOpacity>
           </Box>
       {datas.slice(4, 8).map((item) => (
