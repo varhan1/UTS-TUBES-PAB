@@ -1,9 +1,10 @@
 // screens/BMICalculator.js
 import React, { useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button, Center, Text, VStack, Input, Heading, Box, Alert } from 'native-base';
+import { Button, Center, Text, VStack, Input, Heading, Box } from 'native-base';
 import BMIInfo from './BMIInfo';
 import BMIHistory from './BMIHistory';
+import { Header } from "../components";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,9 +17,7 @@ const BMICalculatorMain = ({ navigation }) => {
   const [targetBMI, setTargetBMI] = useState('');
   const [targetWeight, setTargetWeight] = useState(null);
 
-  // Fungsi untuk menghitung BMI
   const calculateBMI = () => {
-    // Validasi input
     if (!weight || !height || weight <= 0 || height <= 0) {
       alert('Please enter a valid positive weight and height.');
       return;
@@ -42,13 +41,11 @@ const BMICalculatorMain = ({ navigation }) => {
     setBmi(calculatedBMI);
     setCategory(bmiCategory);
 
-    // Hitung berat target jika target BMI diisi
     if (targetBMI) {
       const calculatedTargetWeight = (targetBMI * heightInMeters * heightInMeters).toFixed(2);
       setTargetWeight(calculatedTargetWeight);
     }
 
-    // Tambahkan hasil ke riwayat
     const newEntry = {
       bmi: calculatedBMI,
       category: bmiCategory,
@@ -57,7 +54,6 @@ const BMICalculatorMain = ({ navigation }) => {
     setHistory([newEntry, ...history]);
   };
 
-  // Fungsi untuk mereset input dan hasil
   const resetCalculator = () => {
     setWeight('');
     setHeight('');
@@ -147,17 +143,23 @@ const BMICalculator = () => {
       <Stack.Screen
         name="BMICalculatorMain"
         component={BMICalculatorMain}
-        options={{ title: 'BMI Calculator' }}
+        options={{
+          header: () => <Header title="BMI Calculator" />
+        }}
       />
       <Stack.Screen
         name="BMI Info"
         component={BMIInfo}
-        options={{ title: 'BMI Information' }}
+        options={{
+          header: () => <Header title="BMI Information" />
+        }}
       />
       <Stack.Screen
         name="BMI History"
         component={BMIHistory}
-        options={{ title: 'BMI History' }}
+        options={{
+          header: () => <Header title="BMI History" />
+        }}
       />
     </Stack.Navigator>
   );
