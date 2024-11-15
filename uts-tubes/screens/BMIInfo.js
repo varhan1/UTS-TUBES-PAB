@@ -2,6 +2,8 @@
 import React from 'react';
 import { ScrollView, Box, Text, VStack, Heading } from 'native-base';
 import { useRoute } from '@react-navigation/native';
+import { Header } from "../components";
+
 
 const BMIInfo = () => {
   const route = useRoute();
@@ -12,9 +14,7 @@ const BMIInfo = () => {
   return (
     <ScrollView flex={1} p={4} bg="white">
       <VStack space={6}>
-        <Heading fontSize="2xl" textAlign="center" color="primary.500">
-          BMI Information
-        </Heading>
+
 
         <Box p={4} bg="blue.100" borderRadius="lg">
           <Heading fontSize="lg" color="blue.700" mb={2}>

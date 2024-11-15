@@ -17,11 +17,12 @@ const Header = ({ title, withBack = false }) => {
             {!withBack ? (
               <>
                 <Image
-                  source={require("../assets/image.png")}
+                  source={require("../assets/info-sehat.jpg")}
                   w="12"
                   h="12"
                   alt="CNN Logo"
                   mr={"3"}
+                  rounded={"full"}
                 />
               </>
             ) : (
