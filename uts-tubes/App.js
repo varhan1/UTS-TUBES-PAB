@@ -9,6 +9,8 @@ import Discover from "./screens/discover";
 import NewsDetail from "./screens/news-detail";
 import Tips from "./screens/tips";
 import BMICalculator from "./screens/BMICalculator"; 
+import HealthScreen from "./screens/HealthScreen"; // Import HealthScreen
+import AnotherScreen from "./screens/AnotherScreen"; // Import AnotherScreen
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -49,7 +51,7 @@ const Tabs = () => {
         tabBarIconStyle: { marginTop: 5 },
         tabBarStyle: { height: 100, borderTopWidth: 0 },
         tabBarLabel: ({ children, color, focused }) => (
-          <Text color={focused ? "black" : color} mb={2} textAlign="center">
+          <Text color={focused ? "black" : color} textAlign="center">
             {children}
           </Text>
         ),
@@ -70,6 +72,8 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Tabs" component={Tabs} options={noHead} />
+          <Stack.Screen name="HealthScreen" component={HealthScreen} options={noHead} /> 
+          <Stack.Screen name="AnotherScreen" component={AnotherScreen} options={noHead} />
           <Stack.Screen
             name="News Detail"
             component={NewsDetail}
