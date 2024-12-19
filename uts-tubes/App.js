@@ -33,7 +33,7 @@ const Tabs = () => {
               iconName = "compass-outline";
               break;
             case "Profile":
-              iconName = "time-outline";
+              iconName = "person-outline";
               break;
             case "Tips":
               iconName = "bulb-outline";
@@ -54,8 +54,8 @@ const Tabs = () => {
       })}
     >
       <Tab.Screen name="Home" component={Home} options={noHead} />
-      <Tab.Screen name="Discover" component={Discover} options={noHead} />
       <Tab.Screen name="Tips" component={Tips} options={noHead} />
+      <Tab.Screen name="Discover" component={Discover} options={noHead} />
       <Tab.Screen name="BMI" component={BMICalculator} options={noHead} />
       <Tab.Screen name="Profile" component={Profile} options={noHead} />
     </Tab.Navigator>

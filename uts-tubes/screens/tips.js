@@ -5,11 +5,14 @@ import { Header } from "../components";
 
 const Tips = ({ navigation }) => {
   return (
+    
     <View style={styles.container}>
+      <Header title={"News"}/>
       <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         <Box style={styles.card}>
+          
         <Image
-              source={require("../assets/kesehatan.png")}  // Ganti dengan path gambar yang sesuai
+              source={require("../assets/kesehatan.png")}
               style={styles.tipImage}
             />
           <View style={styles.tipSection}>

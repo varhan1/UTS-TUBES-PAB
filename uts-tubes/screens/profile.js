@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList } from "react-native";
 // Import clock icon if using vector icons
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Header } from "../components";
 
 const WaktuTidur = ({ navigation }) => {
   const [sleepTime, setSleepTime] = useState("");
@@ -31,7 +32,9 @@ const WaktuTidur = ({ navigation }) => {
   };
 
   return (
+    
     <View style={styles.container}>
+      <Header title={"News"}/>
       <Text style={styles.title}>
         <Icon name="clock-o" size={30} color="#4A90E2" /> Waktu Tidur
       </Text>
