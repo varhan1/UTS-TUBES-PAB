@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, Spinner, Box, Icon } from "native-base";
-import { StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native"; // Import useNavigation untuk navigasi
-import { Ionicons } from '@expo/vector-icons';
+import { Box, Text, Button, VStack, Spinner, HStack, Center, ScrollView } from "native-base";
+import { LinearGradient } from "expo-linear-gradient";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const BreathingExercisesScreen = ({ userName }) => {
+const BreathingExercisesScreen = () => {
   const [breathingStage, setBreathingStage] = useState("start");
   const [timeRemaining, setTimeRemaining] = useState(0);
   const [isInProgress, setIsInProgress] = useState(false);
-  const [error, setError] = useState("");
-
-  const navigation = useNavigation(); // Hook untuk navigasi
+  const navigation = useNavigation();
 
   const stages = {
-    inhale: 4, // 4 detik untuk tarik napas
-    hold: 7,   // 7 detik untuk tahan napas
-    exhale: 6, // 6 detik untuk hembuskan napas
+    inhale: 4,
+    hold: 7,
+    exhale: 6,
   };
 
   const startBreathingExercise = () => {
@@ -30,9 +28,8 @@ const BreathingExercisesScreen = ({ userName }) => {
       timer = setInterval(() => {
         setTimeRemaining((prevTime) => {
           if (prevTime > 1) {
-            return prevTime - 1; // Kurangi waktu jika lebih dari 0
+            return prevTime - 1;
           } else {
-            // Menentukan tahap berikutnya ketika waktu habis
             switch (breathingStage) {
               case "inhale":
                 setBreathingStage("hold");
@@ -44,7 +41,7 @@ const BreathingExercisesScreen = ({ userName }) => {
                 setBreathingStage("inhale");
                 return stages.inhale;
               default:
-                return prevTime; // Jangan lakukan apa-apa jika tidak ada tahap
+                return prevTime;
             }
           }
         });
@@ -53,147 +50,116 @@ const BreathingExercisesScreen = ({ userName }) => {
       clearInterval(timer);
     }
 
-    return () => clearInterval(timer); // Bersihkan interval ketika tidak diperlukan lagi
+    return () => clearInterval(timer);
   }, [isInProgress, breathingStage]);
 
-  if (error) {
-    return (
-      <View style={styles.errorContainer}>
-        <Text style={styles.errorText}>Kesalahan: {error}</Text>
-      </View>
-    );
-  }
-
-  const getInstruction = () => {
-    switch (breathingStage) {
-      case "inhale":
-        return "Tarik napas dalam-dalam selama beberapa detik.";
-      case "hold":
-        return "Tahan napas Anda selama beberapa detik.";
-      case "exhale":
-        return "Keluarkan napas perlahan-lahan.";
-      default:
-        return "Mulai latihan pernapasan!";
-    }
-  };
-
   return (
-    <View style={styles.container}>
-      {/* Tombol Back hanya menggunakan Icon */}
-      <Button transparent style={styles.backButton} onPress={() => navigation.goBack()}>
-      <Ionicons name="arrow-back" size={20} color="black" />
-
-      </Button>
-
-      {/* Card Box with Styling */}
-      <Box style={styles.card}>
-        <Text style={styles.title}>Latihan Pernapasan Relaksasi</Text>
-      
-        <Text style={styles.instruction}>{getInstruction()}</Text>
-
-        {/* Timer Display */}
-        <View style={styles.timerContainer}>
-          <Text style={styles.timeRemaining}>{timeRemaining}</Text>
-        </View>
-      </Box>
-
-      <Button
-        style={isInProgress ? styles.stopButton : styles.startButton}
-        onPress={isInProgress ? () => setIsInProgress(false) : startBreathingExercise}
+    <Box flex={1}>
+      {/* Background Gradient */}
+      <LinearGradient
+        colors={["#B2FEFA", "#0ED2F7"]}
+        style={{ flex: 1 }}
       >
-        <Text style={styles.buttonText}>
-          {isInProgress ? "Berhenti" : "Mulai Latihan Pernapasan"}
-        </Text>
-      </Button>
+        <ScrollView contentContainerStyle={{ flexGrow: 1, padding: 20, justifyContent: "center" }}>
+          {/* Penjelasan Relaksasi */}
+          <VStack space={4} alignItems="center" mb={8}>
+            <Box bg="white" borderRadius="lg" shadow={3} p={4} w="90%">
+              <Text
+                fontSize="2xl"
+                fontWeight="bold"
+                color="#34495E"
+                textAlign="center"
+                mb={2}
+              >
+                Apa itu Relaksasi?
+              </Text>
+              <Text fontSize="md" color="#34495E" textAlign="center" lineHeight="lg" mb={4}>
+                Relaksasi adalah kondisi di mana tubuh dan pikiran berada dalam
+                keadaan tenang, bebas dari stres, dan merasa nyaman. Latihan
+                relaksasi dapat membantu menurunkan ketegangan otot, memperlambat
+                detak jantung, dan meningkatkan fokus.
+              </Text>
+              <Text fontSize="lg" fontWeight="bold" color="#2C3E50" textAlign="center" mb={2}>
+                Cara Melakukan Relaksasi:
+              </Text>
+              <Text fontSize="md" color="#34495E" textAlign="left" lineHeight="lg">
+                1. Cari tempat yang tenang dan nyaman untuk duduk atau berbaring.{"\n"}
+                2. Fokus pada pernapasan Anda dan usahakan bernapas dengan pola yang teratur.{"\n"}
+                3. Ikuti langkah-langkah berikut selama latihan pernapasan:{"\n"}
+                - Tarik napas dalam selama 4 detik.{"\n"}
+                - Tahan napas selama 7 detik.{"\n"}
+                - Keluarkan napas perlahan selama 6 detik.{"\n"}
+                4. Ulangi pola ini beberapa kali untuk mencapai relaksasi penuh.
+              </Text>
+            </Box>
+          </VStack>
 
-      {isInProgress && <Spinner color="blue" />}
-    </View>
+          {/* Box untuk Latihan */}
+          <Box
+            bg="white"
+            borderRadius="lg"
+            p={5}
+            w="100%"
+            maxW={400}
+            shadow={3}
+            mb={5}
+            alignSelf="center"
+          >
+            <Text fontSize="lg" fontWeight="bold" color="#2C3E50" textAlign="center" mb={3}>
+              Tahap Latihan
+            </Text>
+            <Text fontSize="md" color="#34495E" textAlign="center" mb={6}>
+              {breathingStage === "start"
+                ? "Ikuti langkah-langkah ini untuk memulai."
+                : `Saat ini Anda berada di tahap: ${breathingStage}`}
+            </Text>
+            <HStack alignItems="center" justifyContent="center">
+              <Text fontSize="4xl" fontWeight="bold" color="#E74C3C" textAlign="center">
+                {timeRemaining}
+              </Text>
+            </HStack>
+          </Box>
+
+          {/* Tombol Mulai/Berhenti */}
+          <Button
+            bg={isInProgress ? "#E74C3C" : "#27AE60"}
+            w="75%"
+            p={4}
+            borderRadius="full"
+            onPress={isInProgress ? () => setIsInProgress(false) : startBreathingExercise}
+            mb={4}
+            alignSelf="center"
+          >
+            <Text fontSize="md" color="white">
+              {isInProgress ? "Berhenti" : "Mulai Latihan Pernapasan"}
+            </Text>
+          </Button>
+
+          {/* Tombol Back */}
+          <Button
+            variant="outline"
+            w="75%"
+            p={4}
+            borderRadius="full"
+            borderColor="#34495E"
+            alignSelf="center"
+            onPress={() => navigation.goBack()}
+            leftIcon={<Ionicons name="" size={20} color="#34495E" />}
+          >
+            <Text fontSize="md" color="#34495E">
+              Kembali ke Halaman Sebelumnya
+            </Text>
+          </Button>
+
+          {isInProgress && (
+            <Center>
+              <Spinner color="white" size="lg" />
+            </Center>
+          )}
+        </ScrollView>
+      </LinearGradient>
+    </Box>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F1F8FF",
-    padding: 20,
-  },
-  card: {
-    backgroundColor: "#FFFFFF",
-    borderRadius: 15,
-    padding: 30,
-    width: "100%",
-    maxWidth: 400,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    marginBottom: 30,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#2C3E50",
-    marginBottom: 10,
-    textAlign: "center",
-  },
-  instruction: {
-    fontSize: 20,
-    fontWeight: "500",
-    color: "#34495E",
-    textAlign: "center",
-    marginBottom: 40,
-  },
-  timerContainer: {
-    marginBottom: 30,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  timeRemaining: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#E74C3C",
-  },
-  startButton: {
-    backgroundColor: "#27AE60",
-    paddingHorizontal: 40,
-    paddingVertical: 15,
-    borderRadius: 25,
-    marginBottom: 20,
-  },
-  stopButton: {
-    backgroundColor: "#E74C3C",
-    paddingHorizontal: 40,
-    paddingVertical: 15,
-    borderRadius: 25,
-    marginBottom: 20,
-  },
-  buttonText: {
-    fontSize: 18,
-    color: "#FFFFFF",
-  },
-  backButton: {
-    position: "absolute",
-    top: 20,
-    left: 20,
-    padding: 10,
-  },
-icon: {
-    fontSize: 40,  // Meningkatkan ukuran ikon
-    color: "#2980B9",  // Warna ikon yang lebih kontras
-  },
-  errorContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#FFEBEE",
-  },
-  errorText: {
-    fontSize: 18,
-    color: "#D32F2F",
-  },
-});
 
 export default BreathingExercisesScreen;

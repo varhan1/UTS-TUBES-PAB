@@ -1,14 +1,11 @@
-// screens/BMICalculator.js
 import React, { useState } from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button, Center, Text, VStack, Input, Heading, Box } from 'native-base';
-import BMIInfo from './BMIInfo';
-import BMIHistory from './BMIHistory';
-import { Header } from "../components";
+import { Button, Center, Text, VStack, Input, Heading, Box, Icon } from 'native-base';
+import { Ionicons } from '@expo/vector-icons';
 
-const Stack = createNativeStackNavigator();
+
 
 const BMICalculatorMain = ({ navigation }) => {
+  const [showInstructions, setShowInstructions] = useState(true);
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [bmi, setBmi] = useState(null);
@@ -63,10 +60,51 @@ const BMICalculatorMain = ({ navigation }) => {
     setTargetWeight(null);
   };
 
+  if (showInstructions) {
+    return (
+      <Center flex={1}>
+
+        <VStack space={4} w="75%" mt={4}>
+          <Box bg="white" p={5} borderRadius="lg" shadow={8}>
+            <Heading fontSize="xl" mb="5" color="green.800">
+              Instructions
+            </Heading>
+            <Text fontSize="md" mb={4}>
+              1. Enter your weight in kilograms (kg).
+            </Text>
+            <Text fontSize="md" mb={4}>
+              2. Enter your height in centimeters (cm).
+            </Text>
+            <Text fontSize="md" mb={4}>
+              3. Optionally, enter your target BMI to calculate your target weight.
+            </Text>
+            <Text fontSize="md" mb={4}>
+              4. Click "Calculate BMI" to see your BMI, category, and target weight.
+            </Text>
+            <Button onPress={() => setShowInstructions(false)} mt={4}>
+              Proceed to Calculator
+            </Button>
+            <Button
+              bg="#FF7043"
+              mt={2}
+              _pressed={{ bg: "#FF7043" }}
+              onPress={() => navigation.goBack()}
+              leftIcon={<Icon as={Ionicons} name="arrow-back" color="white" />}
+            >
+              Back
+            </Button>
+
+          </Box>
+        </VStack>
+      </Center>
+    );
+  }
+
   return (
     <Center flex={1}>
-      <VStack space={4} w="75%">
-        <Box mt={-10} bg="white" p={5} borderRadius="lg" shadow={8}>
+
+      <VStack space={4} w="75%" mt={4}>
+        <Box bg="white" p={5} borderRadius="lg" shadow={8}>
           <Heading fontSize="xl" mb="5" color="green.800">
             BMI Calculator
           </Heading>
@@ -102,6 +140,18 @@ const BMICalculatorMain = ({ navigation }) => {
             Reset
           </Button>
 
+          <Button
+            bg="#FF7043"
+            mt={2}
+            _pressed={{ bg: "#FF7043" }}
+            onPress={showInstructions ? () => navigation.goBack() : () => setShowInstructions(true)}
+            leftIcon={<Icon as={Ionicons} name="arrow-back" color="white" />}
+
+          >
+            Back
+          </Button>
+
+
           {bmi && (
             <>
               <Text fontSize="lg" mt={4}>
@@ -118,14 +168,14 @@ const BMICalculatorMain = ({ navigation }) => {
               <Button
                 mt={4}
                 onPress={() =>
-                  navigation.navigate('BMI Info', { userCategory: category })
+                  navigation.navigate('BMIInfo', { userCategory: category })
                 }
               >
                 See Category Tips
               </Button>
               <Button
                 mt={2}
-                onPress={() => navigation.navigate('BMI History', { history })}
+                onPress={() => navigation.navigate('BMIHistory', { history })}
               >
                 View History
               </Button>
@@ -137,32 +187,4 @@ const BMICalculatorMain = ({ navigation }) => {
   );
 };
 
-const BMICalculator = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="BMICalculatorMain"
-        component={BMICalculatorMain}
-        options={{
-          header: () => <Header title="BMI Calculator" />
-        }}
-      />
-      <Stack.Screen
-        name="BMI Info"
-        component={BMIInfo}
-        options={{
-          header: () => <Header title="BMI Information" />
-        }}
-      />
-      <Stack.Screen
-        name="BMI History"
-        component={BMIHistory}
-        options={{
-          header: () => <Header title="BMI History" />
-        }}
-      />
-    </Stack.Navigator>
-  );
-};
-
-export default BMICalculator;
+export default BMICalculatorMain;

@@ -9,9 +9,11 @@ import Discover from "./screens/discover";
 import NewsDetail from "./screens/news-detail";
 import Tips from "./screens/tips";
 import BMICalculator from "./screens/BMICalculator";
-import HealthScreen from "./screens/HealthScreen"; // Import HealthScreen
-import AnotherScreen from "./screens/AnotherScreen"; // Import AnotherScreen
-import MedicationReminder from "./screens/MedicationReminder"; // Import AnotherScreen
+import BMIInfo from './screens/BMIInfo';
+import BMIHistory from './screens/BMIHistory';
+import HealthScreen from "./screens/HealthScreen"; 
+import AnotherScreen from "./screens/AnotherScreen"; 
+import MedicationReminder from "./screens/MedicationReminder"; 
 import ChatScreen from "./screens/ChatScreen";
 
 const Stack = createNativeStackNavigator();
@@ -33,7 +35,7 @@ const Tabs = () => {
               iconName = "compass-outline";
               break;
             case "Profile":
-              iconName = "person-outline";
+              iconName = "time-outline";
               break;
             case "Tips":
               iconName = "bulb-outline";
@@ -54,8 +56,8 @@ const Tabs = () => {
       })}
     >
       <Tab.Screen name="Home" component={Home} options={noHead} />
-      <Tab.Screen name="Tips" component={Tips} options={noHead} />
       <Tab.Screen name="Discover" component={Discover} options={noHead} />
+      <Tab.Screen name="Tips" component={Tips} options={noHead} />
       <Tab.Screen name="BMI" component={BMICalculator} options={noHead} />
       <Tab.Screen name="Profile" component={Profile} options={noHead} />
     </Tab.Navigator>
@@ -73,6 +75,8 @@ const App = () => {
           <Stack.Screen name="MedicationReminder" component={MedicationReminder} options={noHead} />
           <Stack.Screen name="News Detail" component={NewsDetail} options={noHead} />
           <Stack.Screen name="ChatScreen" component={ChatScreen} options={{ title: "Chat" }} />
+          <Stack.Screen name="BMIInfo" component={BMIInfo} options={{ title: "BMI Info" }} />
+          <Stack.Screen name="BMIHistory" component={BMIHistory} options={{ title: "BMI History" }} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
