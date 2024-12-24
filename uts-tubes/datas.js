@@ -97,6 +97,30 @@ const datas = [
           date: "Selasa, 12 Nov 2024",
           content: content,
       },
+      {
+        id: 20,
+        title: 'Makan Lebih Banyak Sayur',
+        description: 'Tambahkan sayuran hijau seperti bayam, brokoli, dan kale ke dalam menu harian Anda.',
+        image: 'https://a-cdn.sindonews.net/dyn/732/content/2014/11/16/152/924809/pentingnya-sayur-dan-buah-5eO-thumb.jpg',
+        date: "Selasa, 12 Nov 2024",
+          content: content,
+      },
+      {
+        id: 21,
+        title: 'Hindari Gula Berlebih',
+        description: 'Kurangi konsumsi makanan manis seperti kue, soda, dan permen.',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT13mElGAuSOiHsuP1sVNonY_B9vlLfmxCC9sGaBgvSgzancMTrbJEW4KeUDo-vwRiALVo&usqp=CAU',
+        date: "Selasa, 12 Nov 2024",
+          content: content,
+      },
+      {
+        id: 22,
+        title: 'Perbanyak Minum Air',
+        description: 'Minumlah minimal 8 gelas air setiap hari untuk menjaga hidrasi.',
+        image: 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//90/MTA-4013882/gordon-s_gordon-s_dry_750_ml_-750_ml-_full02.jpg',
+        date: "Selasa, 12 Nov 2024",
+          content: content,
+      },
 ];
 
 export default datas;

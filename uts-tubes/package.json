@@ -13,6 +13,10 @@
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.16",
+<<<<<<< HEAD
+=======
+    "axios": "^1.7.9",
+>>>>>>> 35dea6170c1f4d3d4e98791e871c1afc26cfd0f1
     "expo": "~52.0.20",
     "expo-status-bar": "~2.0.0",
     "native-base": "^3.4.28",
@@ -23,7 +27,11 @@
     "react-native-screens": "~4.1.0",
     "react-native-svg": "15.8.0",
     "react-native-web": "~0.19.13",
+<<<<<<< HEAD
     "react-dom": "18.3.1"
+=======
+    "expo-linear-gradient": "~14.0.1"
+>>>>>>> 35dea6170c1f4d3d4e98791e871c1afc26cfd0f1
   },
   "devDependencies": {
     "@babel/core": "^7.24.0"
