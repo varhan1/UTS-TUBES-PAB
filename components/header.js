@@ -6,12 +6,12 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 
 const Header = ({ title, withBack = false }) => {
-  const trueGray900 = "#171717";
   const navigation = useNavigation();
+
   return (
-    <SafeAreaView >
-      <StatusBar barStyle="light" backgroundColor={trueGray900} />
-      <Box bg={"trueGray.900"} p={"4"}>
+    <SafeAreaView>
+      <StatusBar barStyle="light-content" backgroundColor="#171717" />
+      <Box bg={"#171717"} p={"4"}>
         <HStack justifyContent="space-between" alignItems="center">
           <HStack alignItems="center">
             {!withBack ? (
@@ -38,14 +38,16 @@ const Header = ({ title, withBack = false }) => {
             <Heading color={"white"}>{title}</Heading>
           </HStack>
 
-          <HStack space={"2xl"}>
-          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-            <Image
-              source={require("../assets/profile.png")}
-              w="6"
-              h="6"
-              alt="profile icon"
-            />
+          <HStack>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("UserProfile")}
+            >
+              <Image
+                source={require("../assets/profile.png")}
+                w="6"
+                h="6"
+                alt="Profile Icon"
+              />
             </TouchableOpacity>
           </HStack>
         </HStack>

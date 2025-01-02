@@ -4,19 +4,20 @@ import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider, Text } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "./screens/home";
-import Profile from "./screens/profile";
+import Tools from "./screens/Tools";
 import Discover from "./screens/discover";
 import NewsDetail from "./screens/news-detail";
 import Tips from "./screens/tips";
 import BMICalculator from "./screens/BMICalculator";
 import BMIInfo from './screens/BMIInfo';
 import BMIHistory from './screens/BMIHistory';
-import HealthScreen from "./screens/HealthScreen"; 
-import AnotherScreen from "./screens/AnotherScreen"; 
-import MedicationReminder from "./screens/MedicationReminder"; 
+import HealthScreen from "./screens/HealthScreen";
+import AnotherScreen from "./screens/AnotherScreen";
+import MedicationReminder from "./screens/MedicationReminder";
 import ChatScreen from "./screens/ChatScreen";
 import Register from './auth/register';
 import Login from './auth/login';
+import UserProfile from './screens/UserProfile';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -36,8 +37,8 @@ const Tabs = () => {
             case "Discover":
               iconName = "compass-outline";
               break;
-            case "Profile":
-              iconName = "time-outline";
+            case "Tools":
+              iconName = "construct-outline";
               break;
             case "Tips":
               iconName = "bulb-outline";
@@ -61,7 +62,7 @@ const Tabs = () => {
       <Tab.Screen name="Discover" component={Discover} options={noHead} />
       <Tab.Screen name="Tips" component={Tips} options={noHead} />
       <Tab.Screen name="BMI" component={BMICalculator} options={noHead} />
-      <Tab.Screen name="Profile" component={Profile} options={noHead} />
+      <Tab.Screen name="Tools" component={Tools} options={noHead} />
     </Tab.Navigator>
   );
 };
@@ -73,7 +74,7 @@ const App = () => {
         <Stack.Navigator>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="Home" component={Home}  options={noHead} />
+          <Stack.Screen name="Home" component={Home} options={noHead} />
           <Stack.Screen name="Discover" component={Discover} options={noHead} />
           <Stack.Screen name="HealthScreen" component={HealthScreen} options={noHead} />
           <Stack.Screen name="AnotherScreen" component={AnotherScreen} options={noHead} />
@@ -83,6 +84,7 @@ const App = () => {
           <Stack.Screen name="BMIInfo" component={BMIInfo} options={{ title: "BMI Info" }} />
           <Stack.Screen name="BMIHistory" component={BMIHistory} options={{ title: "BMI History" }} />
           <Stack.Screen name="Tabs" component={Tabs} options={noHead} />
+          <Stack.Screen name="UserProfile" component={UserProfile} options={{ title: "Profil Pengguna" }} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

@@ -34,7 +34,6 @@ const WaktuTidur = ({ navigation }) => {
   return (
     
     <View style={styles.container}>
-      <Header title={"News"}/>
       <Text style={styles.title}>
         <Icon name="clock-o" size={30} color="#4A90E2" /> Waktu Tidur
       </Text>
