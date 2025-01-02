@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Image } from 'react-native';
 import { VStack, Input, Button, Text, Box, Center, Heading, Link } from 'native-base';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../services/firebaseConfig';
@@ -11,17 +12,28 @@ const Login = ({ navigation }) => {
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigation.navigate('Home'); // Ganti 'Home' dengan nama layar utama Anda
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Tabs' }]
+      });
+      navigation.navigate('Tabs');
     } catch (err) {
       setError(err.message);
     }
   };
 
+
+
   return (
     <Center flex={1} px="4" bg="coolGray.50">
       <Box safeArea p="6" py="8" w="90%" maxW="300" bg="white" borderRadius="lg" shadow="2">
+        <Image
+        source={require('../assets/logo.png')}
+        alt="Logo"
+        style={{ width: 100, height: 100, alignSelf: 'center', marginBottom: 20 }}
+        />
         <Heading size="lg" fontWeight="bold" textAlign="center" mb="4" color="coolGray.800">
-          Welcome Back
+          Selamat datang di InfoSehat
         </Heading>
 
         {error ? (
@@ -58,7 +70,7 @@ const Login = ({ navigation }) => {
             onPress={() => navigation.navigate('Register')}
             _text={{ color: 'blue.500', fontSize: 'sm' }}
           >
-            Don't have an account? Register
+            Belum punya akun? Daftar di sini
           </Button>
         </VStack>
       </Box>

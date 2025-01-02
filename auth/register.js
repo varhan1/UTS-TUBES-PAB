@@ -11,17 +11,21 @@ const Register = ({ navigation }) => {
   const handleRegister = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigation.navigate('Login');
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'Login' }], 
+      });
     } catch (err) {
       setError(err.message);
     }
   };
 
+
   return (
     <Center flex={1} px="4" bg="coolGray.50">
       <Box safeArea p="6" py="8" w="90%" maxW="300" bg="white" borderRadius="lg" shadow="2">
         <Heading size="lg" fontWeight="bold" textAlign="center" mb="4" color="coolGray.800">
-          Create an Account
+          Buat Akun Baru
         </Heading>
 
         {error ? (
@@ -58,7 +62,7 @@ const Register = ({ navigation }) => {
             onPress={() => navigation.navigate('Login')}
             _text={{ color: 'blue.500', fontSize: 'sm' }}
           >
-            Already have an account? Login
+            Sudah punya akun? Login
           </Button>
         </VStack>
       </Box>
